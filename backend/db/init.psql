@@ -1,0 +1,10 @@
+create database url_shortener;
+
+\c url_shortener;
+
+create schema url;
+
+create table url.urls(
+    id varchar primary key not null,
+    url varchar not null
+);
