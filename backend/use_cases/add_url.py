@@ -8,8 +8,12 @@ def add_url(url):
         url_repo = uow.get_url_repository()
         url = url_repo.add(url)
         url['url_short'] = convert_to_base62(url['id'])
-        url_repo.update(url)
+        url = url_repo.update(url)
         uow.commit()
+        return {
+            'url': url['url'],
+            'url_short': url['url_short']
+        }
 
 
 def convert_to_base62(number):
